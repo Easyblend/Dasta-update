@@ -10,7 +10,54 @@ import sys
 import gamecontroller
 import FakeDrone
 
-useFakeDrone = False
+#fast api imports to create a web server
+from fastapi import FastAPI
+import uvicorn
+import sqlite3
+
+app = FastAPI()
+#start uvicon server
+def run_server():
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+@app.get("/orientation")
+def read_orientation():
+    return {"Data": bluetoothTransmission.received_data}
+
+
+#create an sqlite database to store the data
+conn = sqlite3.connect('data.db')
+c = conn.cursor()
+c.execute('''CREATE TABLE IF NOT EXISTS data
+             (time integer, gyro_raw text, acc_raw text, orientation text, position text, w1 real, w2 real, w3 real, w4 real, angular_velocity_command text)''')
+conn.commit()
+
+#endpoint to send the data to the databse
+@app.post("/data_sql")
+async def receive_data_sql():
+    datas = bluetoothTransmission.received_data
+    print(bluetoothTransmission.received_data)
+
+    c.execute("INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?,?,?)",(datas["time"],str(datas["gyro_raw"]),str(datas["acc_raw"]),str(datas["orientation"]),str(datas["position"]),datas["w1"],datas["w2"],datas["w3"],datas["w4"],str(datas["angular_velocity_command"])))
+    conn.commit()
+
+    # Close the connection
+    conn.close()
+    
+    return {"received": True}
+
+#endpoint to get the data from the database
+@app.get("/data_sql")
+def get_data_sql():
+    c.execute("SELECT * FROM data")
+    return c.fetchall()
+
+
+useFakeDrone = True
 
 quad = FakeDrone.FakeQuad()
                
@@ -204,6 +251,7 @@ if __name__ == "__main__":
     threading.Thread(target=main).start()
     threading.Thread(target=draw).start()
     gamecontroller.main()
+    threading.Thread(target=run_server).start()
     # threading.Thread(target=gamecontroller.main).start()
     # threading.Thread(target=gamecontroller.main).start()
 
