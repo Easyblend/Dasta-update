@@ -1,0 +1,580 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.canvas {
+    width: 100%;
+    height: 100%
+}
+
+
+
+.controls {
+    background-color: #3C3C3C;
+    width: 20%;
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+/* Canvas here*/
+.myChart {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    padding-left: 20px;
+    color: white;
+
+
+}
+
+.settings-page {
+    display: none;
+}
+
+.box-1 {
+    background-color: #FF6766;
+}
+
+.box-2 {
+    background-color: #3C3C3C;
+}
+
+.box-3 {
+    background-color: #66A182;
+}
+
+
+.overlay-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 30px 20px;
+    /* Adjust opacity as needed */
+    z-index: 1;
+    /* Ensure the nav bar is above the canvas */
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.telemetries {
+    font-family: verdana;
+    font-weight: 900;
+    font-size: 17px;
+    color: #fff;
+    font-style: italic;
+    border-radius: 10px;
+    background-color: #ff5c39;
+    height: fit-content;
+    padding: 5px;
+    text-decoration: none;
+}
+
+/* 
+.btn {
+    line-height: 50px;
+    height: 50px;
+    text-align: center;
+    width: 250px;
+    cursor: pointer;
+} */
+
+#viewport {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.battery-percentage {
+    font-family: verdana;
+    text-wrap: nowrap;
+    font-size: 23px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* 
+========================
+      BUTTON ONE
+========================
+*/
+/* .btn-one {
+    color: #FFF;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.btn-one span {
+    transition: all 0.3s;
+}
+
+.btn-one::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-top-color: rgba(255, 255, 255, 0.5);
+    border-bottom-color: rgba(255, 255, 255, 0.5);
+    transform: scale(0.1, 1);
+}
+
+.btn-one:hover span {
+    letter-spacing: 2px;
+}
+
+.btn-one:hover::before {
+    opacity: 1;
+    transform: scale(1, 1);
+}
+
+.btn-one::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: all 0.3s;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-one:hover::after {
+    opacity: 0;
+    transform: scale(0.1, 1);
+} */
+
+
+/* 
+========================
+      BUTTON TWO
+========================
+*/
+/* .btn-two {
+    color: #FFF;
+    transition: all 0.5s;
+    position: relative;
+}
+
+.btn-two span {
+    z-index: 2;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-two::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: all 0.5s;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-two::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: all 0.5s;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-two:hover::before {
+    transform: rotate(-45deg);
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.btn-two:hover::after {
+    transform: rotate(45deg);
+    background-color: rgba(255, 255, 255, 0);
+} */
+
+
+/* 
+========================
+      BUTTON THREE
+========================
+*/
+/* .btn-three {
+    color: #FFF;
+    transition: all 0.5s;
+    position: relative;
+}
+
+.btn-three::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+}
+
+.btn-three:hover::before {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+}
+
+.btn-three::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transform: scale(1.2, 1.2);
+}
+
+.btn-three:hover::after {
+    opacity: 1;
+    transform: scale(1, 1);
+} */
+
+/*888888888888888888888888888888888888888888888888888888888888
+DIRECTIONAL BUTTONS STYLING
+88888888888888888888888888888888888888888888888888888888888888*/
+
+
+.directional-buttons {
+    /* Define the size of the grid */
+    /* Other things rely on this! Change at your own peril! */
+    width: 16rem;
+    height: 16rem;
+    /* display the buttons in a grid */
+    display: grid;
+    /* leave a little gap between columns/rows */
+    grid-gap: 0.5rem;
+    /* define a 3 x 3 grid with middle column/row larger */
+    grid-template-columns: 45fr 60fr 45fr;
+    grid-template-rows: 45fr 60fr 45fr;
+    /* name the cells in the grid */
+    grid-template-areas: "....  up  ....."
+        "left  ..  right"
+        ".... down .....";
+}
+
+/* hides the button text */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
+
+/* base button */
+.direction-button {
+    /* the button colours */
+    color: rgb(55, 50, 50);
+    /* since there's no text, we can use the color value for the background */
+    background: currentcolor;
+    /* clears default button styles */
+    border: none;
+    /* makes sure the triangles are moved relative to the button */
+    position: relative;
+}
+
+/* the overlapping outside triangle 
+ * actually, it's just a rotated square
+ */
+.direction-button:before {
+    /* make the triangle display */
+    display: block;
+    content: "";
+    /* make the triangle able to be moved around relative to the button */
+    position: absolute;
+    /* approximately makes the diagonal the right size */
+    width: 4.25rem;
+    height: 4.25rem;
+    /* rotate the square (to look like a triangle) */
+    transform: rotate(45deg);
+    /* use the current color value for the background to match the button */
+    background: currentcolor;
+}
+
+/* the inner direction triangle */
+.direction-button:after {
+    /* make the triangle display */
+    display: block;
+    content: "";
+    /* make the triangle able to be moved around relative to the button */
+    position: absolute;
+    /* same border-based triangle trick as before */
+    border: 2rem solid transparent;
+    /* using color value for border-color to make it easier to change */
+    color: rgba(255, 250, 250, 0.6);
+}
+
+/* when the button is hovered */
+.direction-button:hover {
+    /* make the button a different color */
+    color: rgb(85, 55, 55);
+}
+
+/* when the button is pressed */
+.direction-button:active:after {
+    /* make the inner triangle a different color! */
+    color: rgb(255, 152, 152);
+}
+
+/* individual button styles */
+.up {
+    /* puts the button in the named grid cell */
+    grid-area: up;
+    /* only curves the outer corners */
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.up:before {
+    /* center the overlapping triangle horizontally */
+    left: calc(50% - 2.125rem);
+    /* position it so it overlaps just right */
+    bottom: -2.125rem;
+}
+
+.up:after {
+    /* do the border-based triangle trick */
+    border-bottom-color: currentcolor;
+    /* center inner triangle horizontally */
+    left: calc(50% - 2rem);
+    /* position it just right */
+    top: -1rem;
+}
+
+.left {
+    /* puts the button in the named grid cell */
+    grid-area: left;
+    /* only curves the outer corners */
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.left:before {
+    /* position it so it overlaps just right */
+    right: -2.125rem;
+    /* center the overlapping triangle vertically */
+    top: calc(50% - 2.125rem);
+}
+
+.left:after {
+    /* do the border-based triangle trick */
+    border-right-color: currentcolor;
+    /* center inner triangle vertically */
+    top: calc(50% - 2rem);
+    /* position it just right */
+    left: -1rem;
+}
+
+.right {
+    /* puts the button in the named grid cell */
+    grid-area: right;
+    /* only curves the outer corners */
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.right:before {
+    /* position it so it overlaps just right */
+    left: -2.125rem;
+    /* center the overlapping triangle vertically */
+    top: calc(50% - 2.125rem);
+}
+
+.right:after {
+    /* do the border-based triangle trick */
+    border-left-color: currentcolor;
+    /* center inner triangle vertically */
+    top: calc(50% - 2rem);
+    /* position it just right */
+    right: -1rem;
+}
+
+.down {
+    /* puts the button in the named grid cell */
+    grid-area: down;
+    /* only curves the outer corners */
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.down:before {
+    /* center the overlapping triangle horizontally */
+    left: calc(50% - 2.125rem);
+    /* position it so it overlaps just right */
+    top: -2.125rem;
+}
+
+.down:after {
+    /* do the border-based triangle trick */
+    border-top-color: currentcolor;
+    /* center inner triangle horizontally */
+    left: calc(50% - 2rem);
+    /* position it just right */
+    bottom: -1rem;
+}
+
+
+/* Battery style */
+.battery-icon_wrapper {
+    --bg-color: hotpink;
+    --width: 90px;
+    /* <==== change to scale all  */
+    --gap: calc(var(--width) / 15);
+    --border-r: calc(var(--width) / 22.5);
+
+    width: var(--width);
+    aspect-ratio: 0.55;
+    border: var(--gap) solid var(--bg-color);
+    border-radius: var(--border-r);
+    padding: var(--gap);
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    gap: var(--gap);
+    position: relative;
+}
+
+.battery-icon_wrapper:before {
+    content: "";
+    position: absolute;
+    background: var(--bg-color);
+    border-radius: var(--border-r);
+    width: calc(var(--width) / 2);
+    aspect-ratio: 3;
+    top: calc((var(--width) / 6) * -1);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.battery-icon_ind {
+    background: transparent;
+}
+
+.lvl1 {
+    --bg-color: #df0012;
+}
+
+.battery-icon_wrapper {
+    --bg-color: hotpink;
+    --width: 90px;
+    /* <==== change to scale all  */
+    --gap: calc(var(--width) / 15);
+    --border-r: calc(var(--width) / 22.5);
+
+    width: var(--width);
+    aspect-ratio: 0.55;
+    border: var(--gap) solid var(--bg-color);
+    border-radius: var(--border-r);
+    padding: var(--gap);
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    gap: var(--gap);
+    position: relative;
+}
+
+.battery-icon_wrapper:before {
+    content: "";
+    position: absolute;
+    background: var(--bg-color);
+    border-radius: var(--border-r);
+    width: calc(var(--width) / 2);
+    aspect-ratio: 3;
+    top: calc((var(--width) / 6) * -1);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.battery-icon_ind {
+    background: transparent;
+}
+
+.lvl1 {
+    --bg-color: #df0012;
+}
+
+.lvl2 {
+    --bg-color: #fb6100;
+}
+
+.lvl3 {
+    --bg-color: #fbb103;
+}
+
+.lvl4 {
+    --bg-color: #8ac419;
+}
+
+.lvl5 {
+    --bg-color: #51af27;
+}
+
+.battery-icon_wrapper.lvl1 .battery-icon_ind:nth-child(n + 5) {
+    background: var(--bg-color);
+}
+
+.battery-icon_wrapper.lvl2 .battery-icon_ind:nth-child(n + 4) {
+    background: var(--bg-color);
+}
+
+.battery-icon_wrapper.lvl3 .battery-icon_ind:nth-child(n + 3) {
+    background: var(--bg-color);
+}
+
+.battery-icon_wrapper.lvl4 .battery-icon_ind:nth-child(n + 2) {
+    background: var(--bg-color);
+}
+
+.battery-icon_wrapper.lvl5 .battery-icon_ind:nth-child(n + 1) {
+    background: var(--bg-color);
+}
+
+.vol-container {
+    color: white;
+    position: absolute;
+    top: 40%;
+    text-align: center;
+    margin: auto;
+    left: 10%;
+
+
+}
